@@ -1,0 +1,19 @@
+REPORT zten_random_numbers.
+
+DATA: ld_ranint TYPE qf00-ran_int,
+      ld_maxint TYPE qf00-ran_int,
+      ld_minint TYPE qf00-ran_int.
+
+ld_minint = 1.
+ld_maxint = 10.
+
+DO 10 TIMES.
+CALL FUNCTION 'QF05_RANDOM_INTEGER'
+EXPORTING
+  ran_int_max   = ld_maxint
+  ran_int_min   = ld_minint
+IMPORTING
+  ran_int       =  ld_ranint.
+
+ WRITE:/ ld_ranint.
+ENDDO.
